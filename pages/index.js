@@ -1,21 +1,30 @@
 import Head from 'next/head'
 import Page from '../components/Page'
+import Link from 'next/link'
+
+
+
+
 const Home = () => (
   <Page>
     <Head>
-      <title>Popcorn</title>
+      <title>Loop</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
       <h1 className="title">
-        Popcorn
+        Loop
       </h1>
+      <h2> Loopy feedback</h2>
 
       <p className="description">
-        Candid feedback
+        Candid feedback 
+       
       </p>
-
+  <Link href='feedback'>
+      <button>click me to get started</button>
+      </Link>
      
     </main>
 

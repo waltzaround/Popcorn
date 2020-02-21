@@ -1,5 +1,5 @@
 
-const Page = () => (
+const Page = ({children}) => (
     <body>
     <style jsx global>{`
     html,
@@ -14,6 +14,7 @@ const Page = () => (
       box-sizing: border-box;
     }
   `}</style>
+  
   {children}    
   </body>
 )
