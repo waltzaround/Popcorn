@@ -1,6 +1,35 @@
 import Head from "next/head";
 import Page from "../components/Page";
 import Link from "next/link";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import styled from 'styled-components'
+
+const CoolButton = styled.button`
+
+margin-top: 1rem;
+  border-radius:120px;
+  width: 14rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: black;
+  color: white;
+  font-family: 'Lexend Deca';
+
+`
+
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+      lineHeight: 1.5,
+    },
+  },
+}));
+
 
 var submitInput;
 var outputText;
@@ -54,24 +83,38 @@ const handleClick = (dept, branch) => {
     .catch(error => console.log(error)); //to catch the errors if any
 };
 
-const Feedback = () => (
+export default function Feedback() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('Controlled');
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
+
+  return (
   <Page>
     <Head>
-      <title>Leave your feedback</title>
+      <title>Feedback</title>
+      <p> This will get analysed by</p>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main>
-      <h2>Leave you Feedback</h2>
+      <h2>Feedback</h2>
       <form className="feedback-form">
-        <textarea
-          className="feedback-text"
+      <TextField
+          id="outlined-multiline-static"
+          label="Leave your feedback here."
+          multiline
+          fullWidth
+          rows="4"
+    
+          variant="outlined"
           name="message"
-          rows="10"
-          cols="30"
           ref={input => (submitInput = input)}
-        ></textarea>
+        />
+       
       </form>
-      <button
+      <CoolButton
         className="feedback-submit"
         name="submit-button"
         onClick={e =>
@@ -82,7 +125,7 @@ const Feedback = () => (
         }
       >
         Submit
-      </button>
+      </CoolButton>
 
       <div className="test">
         <p>Result:</p>
@@ -91,9 +134,12 @@ const Feedback = () => (
         </p>
       </div>
     </main>
+    <footer>Powered by Loop</footer>
+
     <style jsx>{`
       .feedback-form {
-        width: 80%;
+        margin: 0 auto;
+        width: 20rem;
       }
 
       .feedback-text {
@@ -117,7 +163,7 @@ const Feedback = () => (
       }
 
       main {
-        padding: 5rem 0;
+        padding: 1rem 0;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -143,6 +189,7 @@ const Feedback = () => (
       .title a {
         color: #0070f3;
         text-decoration: none;
+   
       }
 
       .title a:hover,
@@ -155,6 +202,8 @@ const Feedback = () => (
         margin: 0;
         line-height: 1.15;
         font-size: 4rem;
+        text-align: left;
+       
       }
 
       .title,
@@ -215,6 +264,12 @@ const Feedback = () => (
         font-size: 1.25rem;
         line-height: 1.5;
       }
+      footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  }
+
 
       @media (max-width: 600px) {
         .grid {
@@ -223,13 +278,11 @@ const Feedback = () => (
         }
       }
     `}</style>
-  </Page>
-);
+  </Page>)
+}
 
 /*
    <Link href="close">
       <button onClick={handleClick}>Submit</button>
     </Link>
 */
-
-export default Feedback;

@@ -10,8 +10,6 @@ const Close = () => (
     </Head>
 
     <main>
-      <h1 className="title">Loop</h1>
-      <h2>Thanks for your feedback</h2>
     </main>
 
     <footer></footer>

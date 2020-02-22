@@ -1,6 +1,17 @@
 import Head from "next/head";
 import Page from "../components/Page";
 import Link from "next/link";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
 
 var deptInput;
 var branchInput;
@@ -40,12 +51,13 @@ const FeedbackOrg = () => (
       }
 
       main {
-        padding: 5rem 0;
+        padding: 2rem;
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: left;
+
       }
 
       footer img {
@@ -88,6 +100,7 @@ const FeedbackOrg = () => (
       .description {
         line-height: 1.5;
         font-size: 1.5rem;
+        text-align: left;
       }
 
       code {

@@ -1,12 +1,13 @@
 
 const Page = ({children}) => (
-    <body>
+    <div>
+      <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet"></link>
     <style jsx global>{`
     html,
     body {
       padding: 0;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      font-family: Lexend Deca, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }
 
@@ -16,7 +17,7 @@ const Page = ({children}) => (
   `}</style>
   
   {children}    
-  </body>
+  </div>
 )
 
 export default Page
