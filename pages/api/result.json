@@ -1,0 +1,73 @@
+{
+  "userID": "",
+
+  "sentiment": {
+    "sentences": [
+      {
+        "text": {
+          "content": "The cat was playing in the garden.",
+          "beginOffset": -1
+        },
+        "sentiment": {
+          "magnitude": 0.4000000059604645,
+          "score": 0.4000000059604645
+        }
+      }
+    ],
+    "tokens": [],
+    "entities": [
+      {
+        "mentions": [
+          {
+            "text": {
+              "content": "cat",
+              "beginOffset": -1
+            },
+            "type": "COMMON",
+            "sentiment": {
+              "magnitude": 0,
+              "score": 0
+            }
+          }
+        ],
+        "metadata": {},
+        "name": "cat",
+        "type": "OTHER",
+        "salience": 0.8815914392471313,
+        "sentiment": {
+          "magnitude": 0,
+          "score": 0
+        }
+      },
+      {
+        "mentions": [
+          {
+            "text": {
+              "content": "garden",
+              "beginOffset": -1
+            },
+            "type": "COMMON",
+            "sentiment": {
+              "magnitude": 0,
+              "score": 0
+            }
+          }
+        ],
+        "metadata": {},
+        "name": "garden",
+        "type": "LOCATION",
+        "salience": 0.11840855330228806,
+        "sentiment": {
+          "magnitude": 0,
+          "score": 0
+        }
+      }
+    ],
+    "categories": [],
+    "documentSentiment": {
+      "magnitude": 0.4000000059604645,
+      "score": 0.4000000059604645
+    },
+    "language": "en"
+  }
+}

@@ -1,9 +1,6 @@
-import Head from 'next/head'
-import Page from '../components/Page'
-import Link from 'next/link'
-
-
-
+import Head from "next/head";
+import Page from "../components/Page";
+import Link from "next/link";
 
 const Home = () => (
   <Page>
@@ -13,24 +10,16 @@ const Home = () => (
     </Head>
 
     <main>
-      <h1 className="title">
-        Loop
-      </h1>
+      <h1 className="title">Loop</h1>
       <h2> Loopy feedback</h2>
 
-      <p className="description">
-        Candid feedback 
-       
-      </p>
-  <Link href='feedback'>
-      <button>click me to get started</button>
+      <p className="description">Candid feedback</p>
+      <Link href="feedback">
+        <button>click me to get started</button>
       </Link>
-     
     </main>
 
-    <footer>
-      
-    </footer>
+    <footer></footer>
 
     <style jsx>{`
       .container {
@@ -50,7 +39,6 @@ const Home = () => (
         justify-content: center;
         align-items: center;
       }
-
 
       footer img {
         margin-left: 0.5rem;
@@ -150,9 +138,7 @@ const Home = () => (
         }
       }
     `}</style>
+  </Page>
+);
 
-    
-    </Page>
-)
-
-export default Home
+export default Home;
