@@ -69,7 +69,9 @@ const handleClick = (dept, branch) => {
       let retString = JSON.stringify(responseJson, null, 2);
       console.log("Got result: " + retString);
       outputText.value = retString;
-      window.open("close", "_self");
+      if (false) {
+        window.open("close", "_self");
+      }
     })
     .catch(error => console.log(error)); //to catch the errors if any
 };
@@ -136,7 +138,7 @@ export default function Feedback() {
         .feedback-submit {
         }
         .test {
-          display: none;
+          /*display: none;*/
         }
         .container {
           min-height: 100vh;

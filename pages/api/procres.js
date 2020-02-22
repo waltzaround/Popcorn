@@ -56,7 +56,7 @@ export default async (req, res) => {
 
   const MongoClient = mongo.MongoClient;
 
-  const url = "mongodb://mongodb.dev:27017";
+  const url = "mongodb://localhost:27017";
 
   // Database Name
   const dbName = "popcorn";
