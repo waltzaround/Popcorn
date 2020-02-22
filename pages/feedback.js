@@ -1,10 +1,25 @@
+import Head from "next/head";
 import Page from "../components/Page";
 import Link from "next/link";
 
 var submitInput;
 var outputText;
 
-const handleClick = () => {
+function getQueryStringValue(key) {
+  return decodeURIComponent(
+    window.location.search.replace(
+      new RegExp(
+        "^(?:.*[&\\?]" +
+          encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") +
+          "(?:\\=([^&]*))?)?.*$",
+        "i"
+      ),
+      "$1"
+    )
+  );
+}
+
+const handleClick = (dept, branch) => {
   var enteredText = "";
 
   if (!submitInput) {
@@ -12,9 +27,10 @@ const handleClick = () => {
   }
 
   enteredText = submitInput.value;
-  //alert(enteredText);
 
   let data = {
+    dept: dept,
+    branch: branch,
     message: enteredText
   };
 
@@ -33,28 +49,180 @@ const handleClick = () => {
       let retString = JSON.stringify(responseJson, null, 2);
       console.log("Got result: " + retString);
       outputText.value = retString;
+      window.open("close", "_self");
     })
     .catch(error => console.log(error)); //to catch the errors if any
 };
 
 const Feedback = () => (
   <Page>
-    <p>hello</p>
-    <form>
-      <textarea
-        name="message"
-        rows="10"
-        cols="30"
-        ref={input => (submitInput = input)}
+    <Head>
+      <title>Leave your feedback</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <main>
+      <h2>Leave you Feedback</h2>
+      <form className="feedback-form">
+        <textarea
+          className="feedback-text"
+          name="message"
+          rows="10"
+          cols="30"
+          ref={input => (submitInput = input)}
+        ></textarea>
+      </form>
+      <button
+        className="feedback-submit"
+        name="submit-button"
+        onClick={e =>
+          handleClick(
+            getQueryStringValue("dept"),
+            getQueryStringValue("branch")
+          )
+        }
       >
-        The cat was playing in the garden.
-      </textarea>
-    </form>
-    <button onClick={handleClick}>Submit</button>
-    <p>Result:</p>
-    <p>
-      <textarea name="result" ref={d => (outputText = d)} />
-    </p>
+        Submit
+      </button>
+
+      <div className="test">
+        <p>Result:</p>
+        <p>
+          <textarea name="result" ref={d => (outputText = d)} />
+        </p>
+      </div>
+    </main>
+    <style jsx>{`
+      .feedback-form {
+        width: 80%;
+      }
+
+      .feedback-text {
+        width: 100%;
+      }
+
+      .feedback-submit {
+      }
+
+      .test {
+        display: none;
+      }
+
+      .container {
+        min-height: 100vh;
+        padding: 0 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      main {
+        padding: 5rem 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer img {
+        margin-left: 0.5rem;
+      }
+
+      footer a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .title a {
+        color: #0070f3;
+        text-decoration: none;
+      }
+
+      .title a:hover,
+      .title a:focus,
+      .title a:active {
+        text-decoration: underline;
+      }
+
+      .title {
+        margin: 0;
+        line-height: 1.15;
+        font-size: 4rem;
+      }
+
+      .title,
+      .description {
+        text-align: center;
+      }
+
+      .description {
+        line-height: 1.5;
+        font-size: 1.5rem;
+      }
+
+      code {
+        background: #fafafa;
+        border-radius: 5px;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+
+      .grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        max-width: 800px;
+        margin-top: 3rem;
+      }
+
+      .card {
+        margin: 1rem;
+        flex-basis: 45%;
+        padding: 1.5rem;
+        text-align: left;
+        color: inherit;
+        text-decoration: none;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        transition: color 0.15s ease, border-color 0.15s ease;
+      }
+
+      .card:hover,
+      .card:focus,
+      .card:active {
+        color: #0070f3;
+        border-color: #0070f3;
+      }
+
+      .card h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.5rem;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          width: 100%;
+          flex-direction: column;
+        }
+      }
+    `}</style>
   </Page>
 );
 

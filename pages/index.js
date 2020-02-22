@@ -14,8 +14,8 @@ const Home = () => (
       <h2> Loopy feedback</h2>
 
       <p className="description">Candid feedback</p>
-      <Link href="feedback">
-        <button>click me to get started</button>
+      <Link href="feedback_org">
+        <button>Get Started</button>
       </Link>
     </main>
 

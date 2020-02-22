@@ -2,16 +2,29 @@ import Head from "next/head";
 import Page from "../components/Page";
 import Link from "next/link";
 
-const Close = () => (
+var deptInput;
+var branchInput;
+
+const handleClick = e => {
+  let url = "feedback?dept=" + deptInput.value + "&branch=" + branchInput.value;
+  window.open(url, "_self");
+};
+
+const FeedbackOrg = () => (
   <Page>
     <Head>
-      <title>Thank you your feedback</title>
+      <title>Leave you feedback</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
-      <h1 className="title">Loop</h1>
-      <h2>Thanks for your feedback</h2>
+      <h2>Leave you Feedback</h2>
+
+      <p className="description">Which department do you work in?</p>
+      <input ref={input => (deptInput = input)} type="text"></input>
+      <p className="description">Which branch are you located in?</p>
+      <input ref={input => (branchInput = input)} type="text"></input>
+      <button onClick={handleClick}>Next</button>
     </main>
 
     <footer></footer>
@@ -136,4 +149,4 @@ const Close = () => (
   </Page>
 );
 
-export default Close;
+export default FeedbackOrg;

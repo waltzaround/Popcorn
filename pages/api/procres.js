@@ -38,6 +38,8 @@ export default async (req, res) => {
   });
 
   var ret = {
+    dept: json.dept,
+    branch: json.branch,
     result: annotateResult
   };
 
